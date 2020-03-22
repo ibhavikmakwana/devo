@@ -44,6 +44,16 @@ class _ListItemWidgetState extends State<ListItemWidget>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
+      child: ListTile(
+        leading: CircleAvatar(),
+        title: Text('Codeify'),
+        subtitle: Text(
+          loremIpsum,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        ),
+        isThreeLine: true,
+      ),
       builder: (_, child) => Transform(
         transform: Matrix4.translationValues(
           0,
@@ -52,16 +62,7 @@ class _ListItemWidgetState extends State<ListItemWidget>
         ),
         child: FadeTransition(
           opacity: _animation,
-          child: ListTile(
-            leading: CircleAvatar(),
-            title: Text('Codeify'),
-            subtitle: Text(
-              loremIpsum,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
-            isThreeLine: true,
-          ),
+          child: child,
         ),
       ),
     );
